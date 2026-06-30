@@ -18,7 +18,7 @@ export default async function DashboardLayout({ children }) {
           <Link href="/dashboard" className="block px-4 py-2 text-gray-700 rounded hover:bg-gray-100 hover:text-blue-600 transition-colors">
             Lista de Turnos
           </Link>
-          <Link href="/ingreso" className="block px-4 py-2 text-gray-700 rounded hover:bg-gray-100 hover:text-blue-600 transition-colors">
+          <Link href="/dashboard/ingreso" className="block px-4 py-2 text-gray-700 rounded hover:bg-gray-100 hover:text-blue-600 transition-colors">
             Nuevo Ingreso
           </Link>
         </nav>
