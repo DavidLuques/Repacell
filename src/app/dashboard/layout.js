@@ -37,7 +37,7 @@ export default async function DashboardLayout({ children }) {
             Nuevo Ingreso
           </Link>
           {isAdmin && (
-            <Link href="/dashboard/admin" className="block px-4 py-2 mt-4 text-blue-800 bg-blue-50 rounded hover:bg-blue-100 transition-colors font-medium border border-blue-100">
+            <Link href="/dashboard/admin" className="block px-4 py-2 mt-4 text-gray-700 rounded hover:bg-gray-100 hover:text-blue-600 transition-colors">
               Gestión Técnicos
             </Link>
           )}
