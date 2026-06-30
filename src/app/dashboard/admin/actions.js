@@ -9,7 +9,7 @@ async function requireAdmin() {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) throw new Error("No autenticado")
   
-  const { data: roleData } = await supabase
+  const { data: roleData } = await supabaseAdmin
     .from('user_roles')
     .select('role')
     .eq('user_id', user.id)
