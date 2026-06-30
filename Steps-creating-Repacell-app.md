@@ -25,3 +25,7 @@ verificamos que
 npm run dev
 ``` funcione y continuamos... 
 
+Conectamos nuestro sistema de supabase via api key y con la url , y lo metemos en un .env.local 
+
+luego creo la base de datos esperada ! 
+
