@@ -39,8 +39,8 @@ export default async function AdminPage() {
   return (
     <div className="max-w-5xl mx-auto space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Panel de Administración</h1>
-        <p className="text-gray-500 mt-2">Gestiona el acceso de los técnicos del taller.</p>
+        <h1 className="text-3xl font-bold text-gray-900">Gestión de Técnicos</h1>
+        <p className="text-gray-500 mt-2">Crea, edita o elimina los accesos del equipo técnico.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

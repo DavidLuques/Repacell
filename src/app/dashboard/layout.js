@@ -36,7 +36,7 @@ export default async function DashboardLayout({ children }) {
           </Link>
           {isAdmin && (
             <Link href="/dashboard/admin" className="block px-4 py-2 mt-4 text-blue-800 bg-blue-50 rounded hover:bg-blue-100 transition-colors font-medium border border-blue-100">
-              Panel Admin
+              Gestión Técnicos
             </Link>
           )}
         </nav>
