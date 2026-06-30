@@ -86,7 +86,7 @@ export default async function ReparacionPage({ params }) {
                   <AlertTriangle size={14} /> Falla Reportada (Ingreso)
                 </h4>
                 <p className="text-sm text-gray-700 bg-red-50 p-3 rounded-lg border border-red-100 italic">
-                  "{appointment.issue_description}"
+                  &quot;{appointment.issue_description}&quot;
                 </p>
               </div>
             </div>

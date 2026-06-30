@@ -26,11 +26,10 @@ export async function addTechnician(formData) {
   const email = formData.get('email')
   const password = formData.get('password')
 
-  // 1. Crear el usuario en Auth
   const { data: authData, error: authError } = await supabaseAdmin.auth.admin.createUser({
     email: email,
     password: password,
-    email_confirm: true // Confirmado automáticamente para que puedan loguearse ya
+    email_confirm: true 
   })
 
   if (authError) {
@@ -38,7 +37,6 @@ export async function addTechnician(formData) {
     throw new Error(authError.message)
   }
 
-  // 2. Insertarlo en user_roles con rol de tecnico
   const { error: dbError } = await supabaseAdmin
     .from('user_roles')
     .insert([{ user_id: authData.user.id, role: 'technician' }])
@@ -56,7 +54,6 @@ export async function deleteTechnician(formData) {
   
   const userId = formData.get('userId')
   
-  // Eliminar el usuario de Auth (esto borra en cascada la fila en user_roles gracias a la Foreign Key)
   const { error } = await supabaseAdmin.auth.admin.deleteUser(userId)
   
   if (error) {
@@ -78,7 +75,7 @@ export async function updateTechnicianPassword(formData) {
   })
   
   if (error) {
-    console.error("Error al actualizar contrase�a:", error)
+    console.error("Error al actualizar contraseña:", error)
     throw new Error(error.message)
   }
   

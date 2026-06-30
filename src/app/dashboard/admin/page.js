@@ -7,8 +7,8 @@ export default async function AdminPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
-  // Proteger la ruta a nivel servidor (Solo Admin)
-  const { data: roleData } = await supabase
+  // Proteger la ruta a nivel servidor (Solo Admin) bypasseando RLS
+  const { data: roleData } = await supabaseAdmin
     .from('user_roles')
     .select('role')
     .eq('user_id', user?.id)

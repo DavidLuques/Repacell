@@ -9,6 +9,22 @@ const statusConfig = {
   delivered: { label: 'Entregado', color: 'bg-gray-100 text-gray-800 border-gray-200', icon: Package }
 }
 
+const FilterButton = ({ status, label, currentFilter }) => {
+  const isActive = currentFilter === status
+  return (
+    <Link 
+      href={`/dashboard${status === 'all' ? '' : `?status=${status}`}`}
+      className={`px-4 py-2 text-sm font-medium rounded-full transition-all ${
+        isActive 
+          ? 'bg-blue-600 text-white shadow-md' 
+          : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300'
+      }`}
+    >
+      {label}
+    </Link>
+  )
+}
+
 export default async function DashboardPage({ searchParams }) {
   const awaitedSearchParams = await searchParams;
   const currentFilter = awaitedSearchParams?.status || 'all'
@@ -26,22 +42,6 @@ export default async function DashboardPage({ searchParams }) {
   }
 
   const { data: appointments } = await query
-
-  const FilterButton = ({ status, label }) => {
-    const isActive = currentFilter === status
-    return (
-      <Link 
-        href={`/dashboard${status === 'all' ? '' : `?status=${status}`}`}
-        className={`px-4 py-2 text-sm font-medium rounded-full transition-all ${
-          isActive 
-            ? 'bg-blue-600 text-white shadow-md' 
-            : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-gray-300'
-        }`}
-      >
-        {label}
-      </Link>
-    )
-  }
 
   return (
     <div className="max-w-7xl mx-auto space-y-8">
@@ -61,10 +61,10 @@ export default async function DashboardPage({ searchParams }) {
 
       {/* Filtros */}
       <div className="flex flex-wrap gap-3">
-        <FilterButton status="all" label="Todos los turnos" />
-        <FilterButton status="pending" label="Pendientes" />
-        <FilterButton status="in_progress" label="En Reparación" />
-        <FilterButton status="ready" label="Listos" />
+        <FilterButton status="all" label="Todos los turnos" currentFilter={currentFilter} />
+        <FilterButton status="pending" label="Pendientes" currentFilter={currentFilter} />
+        <FilterButton status="in_progress" label="En Reparación" currentFilter={currentFilter} />
+        <FilterButton status="ready" label="Listos" currentFilter={currentFilter} />
       </div>
 
       {/* Tabla de Datos */}

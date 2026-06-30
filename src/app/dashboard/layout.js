@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
+import { supabaseAdmin } from '@/lib/supabase/admin'
 import { logout } from '@/app/login/actions'
 import Link from 'next/link'
 
@@ -8,7 +9,8 @@ export default async function DashboardLayout({ children }) {
 
   let role = 'technician'
   if (user) {
-    const { data: roleData } = await supabase
+    // Usar supabaseAdmin para bypassear RLS y garantizar la lectura
+    const { data: roleData } = await supabaseAdmin
       .from('user_roles')
       .select('role')
       .eq('user_id', user.id)
