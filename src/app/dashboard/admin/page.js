@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { supabaseAdmin } from '@/lib/supabase/admin'
 import { redirect } from 'next/navigation'
-import { addTechnician, deleteTechnician } from './actions'
+import { addTechnician, deleteTechnician, updateTechnicianPassword } from './actions'
 
 export default async function AdminPage() {
   const supabase = await createClient()
@@ -62,8 +62,31 @@ export default async function AdminPage() {
           </form>
         </div>
 
+        {/* Formulario Editar */}
+        <div className="md:col-span-1 bg-white p-6 rounded-lg shadow-sm border border-gray-200 h-fit">
+          <h2 className="text-xl font-semibold mb-4 border-b pb-2">Editar (Clave)</h2>
+          <form action={updateTechnicianPassword} className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Técnico a editar</label>
+              <select name="userId" required className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 border p-2 bg-gray-50">
+                <option value="">Seleccione técnico...</option>
+                {technicians.map(tech => (
+                  <option key={tech.id} value={tech.id}>{tech.email}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Nueva Contraseña</label>
+              <input name="password" type="text" placeholder="Nueva clave" required minLength="6" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 border p-2" />
+            </div>
+            <button type="submit" className="w-full bg-yellow-500 text-white font-medium py-2 rounded shadow-sm hover:bg-yellow-600 transition-colors">
+              Actualizar Clave
+            </button>
+          </form>
+        </div>
+
         {/* Lista */}
-        <div className="md:col-span-2 bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+        <div className="md:col-span-1 lg:col-span-1 bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden h-fit">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>

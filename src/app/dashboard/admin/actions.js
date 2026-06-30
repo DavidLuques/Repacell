@@ -66,3 +66,21 @@ export async function deleteTechnician(formData) {
   
   revalidatePath('/dashboard/admin')
 }
+
+export async function updateTechnicianPassword(formData) {
+  await requireAdmin()
+  
+  const userId = formData.get('userId')
+  const newPassword = formData.get('password')
+
+  const { error } = await supabaseAdmin.auth.admin.updateUserById(userId, {
+    password: newPassword
+  })
+  
+  if (error) {
+    console.error("Error al actualizar contraseña:", error)
+    throw new Error(error.message)
+  }
+  
+  revalidatePath('/dashboard/admin')
+}
