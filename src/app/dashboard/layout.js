@@ -6,12 +6,25 @@ export default async function DashboardLayout({ children }) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
+  let role = 'technician'
+  if (user) {
+    const { data: roleData } = await supabase
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', user.id)
+      .single()
+    if (roleData) role = roleData.role
+  }
+
+  const isAdmin = role === 'admin'
+
   return (
     <div className="flex h-screen bg-gray-50 text-gray-900">
       {/* Sidebar minimalista */}
       <aside className="w-64 bg-white border-r flex flex-col">
         <div className="p-6">
           <h1 className="text-2xl font-bold tracking-tight text-blue-600">Repacell</h1>
+          <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{role}</span>
         </div>
         
         <nav className="flex-1 px-4 space-y-2 mt-4">
@@ -21,6 +34,11 @@ export default async function DashboardLayout({ children }) {
           <Link href="/dashboard/ingreso" className="block px-4 py-2 text-gray-700 rounded hover:bg-gray-100 hover:text-blue-600 transition-colors">
             Nuevo Ingreso
           </Link>
+          {isAdmin && (
+            <Link href="/dashboard/admin" className="block px-4 py-2 mt-4 text-blue-800 bg-blue-50 rounded hover:bg-blue-100 transition-colors font-medium border border-blue-100">
+              Panel Admin
+            </Link>
+          )}
         </nav>
         
         <div className="p-4 border-t bg-gray-50">
