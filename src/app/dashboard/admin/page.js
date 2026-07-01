@@ -39,36 +39,36 @@ export default async function AdminPage() {
   return (
     <div className="max-w-5xl mx-auto space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">Gestión de Técnicos</h1>
-        <p className="text-gray-500 mt-2">Crea, edita o elimina los accesos del equipo técnico.</p>
+        <h1 className="text-3xl font-bold text-white drop-shadow-sm">Gestión de Técnicos</h1>
+        <p className="text-violet-200/60 mt-2">Crea, edita o elimina los accesos del equipo técnico.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Formulario */}
-        <div className="md:col-span-1 bg-white p-6 rounded-lg shadow-sm border border-gray-200 h-fit">
-          <h2 className="text-xl font-semibold mb-4 border-b pb-2">Registrar Técnico</h2>
+        <div className="bg-black/40 backdrop-blur-md p-6 rounded-xl shadow-lg border border-violet-500/20 h-fit">
+          <h2 className="text-xl font-semibold mb-4 border-b border-violet-500/20 pb-2 text-white">Registrar Técnico</h2>
           <form action={addTechnician} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700">Email del Técnico</label>
-              <input name="email" type="email" placeholder="tecnico@repacell.com" required className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 border p-2" />
+              <label className="block text-sm font-medium text-gray-300">Email del Técnico</label>
+              <input name="email" type="email" placeholder="tecnico@repacell.com" required className="mt-1 block w-full rounded-lg bg-white/95 text-black placeholder-gray-500 shadow-inner focus:outline-none focus:ring-2 focus:ring-violet-500 border-0 p-2.5 transition-all" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Contraseña temporal</label>
-              <input name="password" type="text" placeholder="min. 6 caracteres" required minLength="6" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 border p-2" />
+              <label className="block text-sm font-medium text-gray-300">Contraseña temporal</label>
+              <input name="password" type="text" placeholder="min. 6 caracteres" required minLength="6" className="mt-1 block w-full rounded-lg bg-white/95 text-black placeholder-gray-500 shadow-inner focus:outline-none focus:ring-2 focus:ring-violet-500 border-0 p-2.5 transition-all" />
             </div>
-            <button type="submit" className="w-full bg-blue-600 text-white font-medium py-2 rounded shadow-sm hover:bg-blue-700 transition-colors">
+            <button type="submit" className="w-full bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold py-2.5 rounded-lg shadow-[0_0_15px_rgba(139,92,246,0.4)] hover:from-violet-500 hover:to-fuchsia-500 transition-all uppercase tracking-wider text-sm mt-2">
               Registrar Técnico
             </button>
           </form>
         </div>
 
         {/* Formulario Editar */}
-        <div className="md:col-span-1 bg-white p-6 rounded-lg shadow-sm border border-gray-200 h-fit">
-          <h2 className="text-xl font-semibold mb-4 border-b pb-2">Editar (Clave)</h2>
+        <div className="bg-black/40 backdrop-blur-md p-6 rounded-xl shadow-lg border border-violet-500/20 h-fit">
+          <h2 className="text-xl font-semibold mb-4 border-b border-violet-500/20 pb-2 text-white">Editar (Clave)</h2>
           <form action={updateTechnicianPassword} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700">Técnico a editar</label>
-              <select name="userId" required className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 border p-2 bg-gray-50">
+              <label className="block text-sm font-medium text-gray-300">Técnico a editar</label>
+              <select name="userId" required className="mt-1 block w-full rounded-lg bg-white/95 text-black shadow-inner focus:outline-none focus:ring-2 focus:ring-violet-500 border-0 p-2.5 transition-all">
                 <option value="">Seleccione técnico...</option>
                 {technicians.map(tech => (
                   <option key={tech.id} value={tech.id}>{tech.email}</option>
@@ -76,45 +76,47 @@ export default async function AdminPage() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Nueva Contraseña</label>
-              <input name="password" type="text" placeholder="Nueva clave" required minLength="6" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 border p-2" />
+              <label className="block text-sm font-medium text-gray-300">Nueva Contraseña</label>
+              <input name="password" type="text" placeholder="Nueva clave" required minLength="6" className="mt-1 block w-full rounded-lg bg-white/95 text-black placeholder-gray-500 shadow-inner focus:outline-none focus:ring-2 focus:ring-violet-500 border-0 p-2.5 transition-all" />
             </div>
-            <button type="submit" className="w-full bg-yellow-500 text-white font-medium py-2 rounded shadow-sm hover:bg-yellow-600 transition-colors">
+            <button type="submit" className="w-full bg-gradient-to-r from-yellow-600 to-orange-600 text-white font-bold py-2.5 rounded-lg shadow-[0_0_15px_rgba(217,119,6,0.3)] hover:from-yellow-500 hover:to-orange-500 transition-all uppercase tracking-wider text-sm mt-2">
               Actualizar Clave
             </button>
           </form>
         </div>
 
         {/* Lista */}
-        <div className="md:col-span-1 lg:col-span-1 bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden h-fit">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Rol</th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Acción</th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {technicians.map(tech => (
-                <tr key={tech.id}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{tech.email}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-blue-600 capitalize font-medium">{tech.role}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <form action={deleteTechnician}>
-                      <input type="hidden" name="userId" value={tech.id} />
-                      <button type="submit" className="text-red-600 hover:text-red-900 bg-red-50 px-3 py-1 rounded">Eliminar</button>
-                    </form>
-                  </td>
-                </tr>
-              ))}
-              {technicians.length === 0 && (
+        <div className="md:col-span-2 bg-black/40 backdrop-blur-md rounded-xl shadow-lg border border-violet-500/20 overflow-hidden h-fit">
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-violet-500/10">
+              <thead className="bg-black/60">
                 <tr>
-                  <td colSpan="3" className="px-6 py-8 text-center text-gray-500">No hay técnicos registrados. Usa el formulario para agregar uno.</td>
+                  <th className="px-6 py-3 text-left text-xs font-bold text-violet-300 uppercase tracking-wider">Email</th>
+                  <th className="px-6 py-3 text-left text-xs font-bold text-violet-300 uppercase tracking-wider">Rol</th>
+                  <th className="px-6 py-3 text-right text-xs font-bold text-violet-300 uppercase tracking-wider">Acción</th>
                 </tr>
-              )}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-violet-500/10">
+                {technicians.map(tech => (
+                  <tr key={tech.id} className="hover:bg-violet-900/20 transition-colors">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">{tech.email}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-fuchsia-400 capitalize font-bold">{tech.role}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      <form action={deleteTechnician}>
+                        <input type="hidden" name="userId" value={tech.id} />
+                        <button type="submit" className="text-red-400 hover:text-red-300 bg-red-950/30 border border-red-500/20 px-3 py-1.5 rounded-lg transition-colors hover:bg-red-900/50">Eliminar</button>
+                      </form>
+                    </td>
+                  </tr>
+                ))}
+                {technicians.length === 0 && (
+                  <tr>
+                    <td colSpan="3" className="px-6 py-8 text-center text-gray-400">No hay técnicos registrados. Usa el formulario para agregar uno.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

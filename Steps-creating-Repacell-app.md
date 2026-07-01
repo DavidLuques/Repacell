@@ -28,4 +28,5 @@ npm run dev
 Conectamos nuestro sistema de supabase via api key y con la url , y lo metemos en un .env.local 
 
 luego creo la base de datos esperada ! 
+para crear la base de datos modelo la relacion 
 

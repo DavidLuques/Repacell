@@ -79,54 +79,54 @@ export default function AppointmentForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Cliente */}
-        <div className="space-y-4">
-          <h3 className="text-lg font-medium border-b pb-2 text-gray-800">Datos del Cliente</h3>
+        <div className="space-y-4 bg-black/40 backdrop-blur-md p-6 rounded-xl border border-violet-500/20">
+          <h3 className="text-lg font-medium border-b border-violet-500/20 pb-2 text-white">Datos del Cliente</h3>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Nombre Completo</label>
-            <input {...register('client_name')} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2" />
-            {errors.client_name && <p className="text-red-500 text-sm mt-1">{errors.client_name.message}</p>}
+            <label className="block text-sm font-medium text-gray-300">Nombre Completo</label>
+            <input {...register('client_name')} className="mt-1 block w-full rounded-lg bg-white/95 text-black border-0 shadow-inner focus:ring-2 focus:ring-violet-500 p-2.5 transition-all" />
+            {errors.client_name && <p className="text-red-400 text-sm mt-1">{errors.client_name.message}</p>}
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Teléfono</label>
-            <input {...register('phone')} type="tel" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2" />
-            {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>}
+            <label className="block text-sm font-medium text-gray-300">Teléfono</label>
+            <input {...register('phone')} type="tel" className="mt-1 block w-full rounded-lg bg-white/95 text-black border-0 shadow-inner focus:ring-2 focus:ring-violet-500 p-2.5 transition-all" />
+            {errors.phone && <p className="text-red-400 text-sm mt-1">{errors.phone.message}</p>}
           </div>
         </div>
 
         {/* Dispositivo */}
-        <div className="space-y-4">
-          <h3 className="text-lg font-medium border-b pb-2 text-gray-800">Dispositivo</h3>
+        <div className="space-y-4 bg-black/40 backdrop-blur-md p-6 rounded-xl border border-violet-500/20">
+          <h3 className="text-lg font-medium border-b border-violet-500/20 pb-2 text-white">Dispositivo</h3>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Marca</label>
-            <input {...register('device_brand')} placeholder="Ej: Apple, Samsung" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2" />
-            {errors.device_brand && <p className="text-red-500 text-sm mt-1">{errors.device_brand.message}</p>}
+            <label className="block text-sm font-medium text-gray-300">Marca</label>
+            <input {...register('device_brand')} placeholder="Ej: Apple, Samsung" className="mt-1 block w-full rounded-lg bg-white/95 text-black placeholder-gray-500 border-0 shadow-inner focus:ring-2 focus:ring-violet-500 p-2.5 transition-all" />
+            {errors.device_brand && <p className="text-red-400 text-sm mt-1">{errors.device_brand.message}</p>}
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Modelo</label>
-            <input {...register('device_model')} placeholder="Ej: iPhone 13 Pro" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2" />
-            {errors.device_model && <p className="text-red-500 text-sm mt-1">{errors.device_model.message}</p>}
+            <label className="block text-sm font-medium text-gray-300">Modelo</label>
+            <input {...register('device_model')} placeholder="Ej: iPhone 13 Pro" className="mt-1 block w-full rounded-lg bg-white/95 text-black placeholder-gray-500 border-0 shadow-inner focus:ring-2 focus:ring-violet-500 p-2.5 transition-all" />
+            {errors.device_model && <p className="text-red-400 text-sm mt-1">{errors.device_model.message}</p>}
           </div>
         </div>
       </div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700">Falla o problema reportado</label>
-        <textarea {...register('issue_description')} rows={3} placeholder="Detalla el problema que menciona el cliente..." className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2"></textarea>
-        {errors.issue_description && <p className="text-red-500 text-sm mt-1">{errors.issue_description.message}</p>}
+      <div className="bg-black/40 backdrop-blur-md p-6 rounded-xl border border-violet-500/20">
+        <label className="block text-sm font-medium text-gray-300">Falla o problema reportado</label>
+        <textarea {...register('issue_description')} rows={3} placeholder="Detalla el problema que menciona el cliente..." className="mt-1 block w-full rounded-lg bg-white/95 text-black placeholder-gray-500 border-0 shadow-inner focus:ring-2 focus:ring-violet-500 p-2.5 transition-all"></textarea>
+        {errors.issue_description && <p className="text-red-400 text-sm mt-1">{errors.issue_description.message}</p>}
       </div>
 
-      <div className="space-y-4">
-        <h3 className="text-lg font-medium border-b pb-2 text-gray-800">Asignación de Turno</h3>
+      <div className="space-y-4 bg-black/40 backdrop-blur-md p-6 rounded-xl border border-violet-500/20">
+        <h3 className="text-lg font-medium border-b border-violet-500/20 pb-2 text-white">Asignación de Turno</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Fecha del turno</label>
-            <input type="date" {...register('scheduled_date')} min={new Date().toISOString().split('T')[0]} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2" />
-            {errors.scheduled_date && <p className="text-red-500 text-sm mt-1">{errors.scheduled_date.message}</p>}
+            <label className="block text-sm font-medium text-gray-300">Fecha del turno</label>
+            <input type="date" {...register('scheduled_date')} min={new Date().toISOString().split('T')[0]} className="mt-1 block w-full rounded-lg bg-white/95 text-black border-0 shadow-inner focus:ring-2 focus:ring-violet-500 p-2.5 transition-all" />
+            {errors.scheduled_date && <p className="text-red-400 text-sm mt-1">{errors.scheduled_date.message}</p>}
           </div>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700">Horario (Slots dinámicos)</label>
-            <select {...register('scheduled_time')} disabled={!selectedDate || loadingSlots} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 border p-2 bg-white">
+            <label className="block text-sm font-medium text-gray-300">Horario (Slots dinámicos)</label>
+            <select {...register('scheduled_time')} disabled={!selectedDate || loadingSlots} className="mt-1 block w-full rounded-lg bg-white/95 text-black border-0 shadow-inner focus:ring-2 focus:ring-violet-500 p-2.5 transition-all disabled:opacity-50">
               <option value="">{loadingSlots ? 'Consultando disponibilidad...' : (selectedDate ? 'Selecciona una hora disponible' : 'Primero elige una fecha')}</option>
               {baseSlots.map(slot => {
                 const isOccupied = occupiedSlots.includes(slot)
@@ -142,8 +142,8 @@ export default function AppointmentForm() {
         </div>
       </div>
 
-      <div className="pt-6 border-t">
-        <button type="submit" disabled={isSubmitting} className="w-full md:w-auto px-8 py-3 bg-blue-600 text-white font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 transition-colors">
+      <div className="pt-6 border-t border-violet-500/20">
+        <button type="submit" disabled={isSubmitting} className="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white font-bold rounded-lg shadow-[0_0_15px_rgba(139,92,246,0.4)] hover:from-violet-500 hover:to-fuchsia-500 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 transition-all uppercase tracking-wider text-sm">
           {isSubmitting ? 'Guardando...' : 'Crear Turno de Ingreso'}
         </button>
       </div>
