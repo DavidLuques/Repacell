@@ -14,8 +14,12 @@ El objetivo fue crear una aplicación altamente funcional, de gran fidelidad vis
 
 ---
 ## USUARIOS 
-**Admin** :  Admin@admin.com    password:  admin
-**technic**: techic@technic.com password: technic
+
+**Admin** :  Admin@admin.com    **Password:**  admin**
+
+**technic**: techic@technic.com **Password:**  technic**
+
+---
 
 ## 🏗️ Tecnologías y Arquitectura
 
@@ -53,6 +57,7 @@ graph TD
 ## 🤖 Uso de Inteligencia Artificial (Orquestación)
 
 Para comenzar este proyecto lo que hice fue elegir opencode como orquestador de Agentes, y cree agentes de la siguiente manera:
+
 **Agentes:**
 
 1. **Architect y Filosofía YAGNI**: Se instruyó a la IA (OpenCode / Modelos LLM avanzados) para adoptar el rol de _Lead Architect_ basándose en la filosofía de mantener la complejidad al mínimo (YAGNI). el repositorio de este agente es https://github.com/DietrichGebert/ponytail/ lo utilize veces anteriores y me funciono bien para no tener una sobreingenieria, ademas lo segui personalizando con instrucciones de prompt para que se adaptara a mi estilo de programacion.
@@ -72,7 +77,8 @@ Utilize la IA para modelar la base de datos y crear las querys aunque podria hac
 Configurado supabase lo integre al proyecto en un .env
 
 Para deployar la aplicacion elegi Netlify y asi automatizar todo el flujo de Continuos deployment ,asi tendria CI/CD. 
-utilize la capa gratuita de netlify y supabase .
+utilize la capa gratuita de netlify y supabase.
+
 
 **Conclusión del uso de IA**: Aceleró el desarrollo permitiendo tener Auth, Base de Datos, Storage, UI Responsiva y CI/CD completo en menos de 7 días. El diferencial estuvo en **guiar** a la IA, no en obedecerla.
 ademas de pedir que me explique el codigo generado para entender lo que hacia , exigirle los tests que omitio, ademas en el CI no se verificaba para que github actions corriera los tests asi que tuve que agregar esa modificacion ya que en modificaciones posteriores podrian romper la aplicacion y eso debe ser controlado.
