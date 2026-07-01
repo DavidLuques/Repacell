@@ -30,3 +30,5 @@ Conectamos nuestro sistema de supabase via api key y con la url , y lo metemos e
 luego creo la base de datos esperada ! 
 para crear la base de datos modelo la relacion 
 
+cuando agrego los tests noto que en el CI no se integra esa revision por lo cual si algun test fallara en produccion no detectaria la falla, asi que procedo a crear tambien la linea para que en el YAML corra los tests .
+
