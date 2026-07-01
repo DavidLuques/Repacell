@@ -1,4 +1,5 @@
 # 📱 Repacell App - Repair Management System
+ **Demo en Vivo:** [repacell.netlify.app](https://repacell.netlify.app)
 
 Bienvenido al repositorio de **Repacell App**,Un proyecto generado para gestionar turno de reparaciones de celularesy documentarlos.
 
@@ -13,7 +14,7 @@ Bienvenido al repositorio de **Repacell App**,Un proyecto generado para gestiona
 El objetivo fue crear una aplicación altamente funcional, de gran fidelidad visual (UI/UX tecnológica con Glassmorphism) y robusta, priorizando la calidad sobre la cantidad de funcionalidades.
 
 ---
-## USUARIOS 
+## USUARIOS para ingresar
 
 **Admin** :  Admin@admin.com    **Password:**  admin**
 
@@ -68,16 +69,24 @@ Para comenzar este proyecto lo que hice fue elegir opencode como orquestador de 
 Descubri que un consumo excesivo de tokens se producia con los tokens de input y output, para solucionarlo implemente una memoria persistente
 https://github.com/Gentleman-Programming/engram para que al agotar el contexto, la compactacion no fuera solamente por parte de la IA sino se persistiera en una memoria de ENGRAM, asi obtendria una compactacion propia y podria seguir trabajando con la IA sin perder el contexto del proyecto.
 
-# Flujo de trabajo
+# Flujo de Trabajo y Decisiones Técnicas
 
-Mi flujo de trabajo fue el de utilizar el modo planificador en opencode, el cual me genero un plan de accion, discutimos sobre arquitectura y teniendo el plan de accion seguimos con la implementacion, el agente arquitecto de la IA hacia revisiones de los cambios realizados por los agentes de front-end y back-end para asegurar que la arquitectura se mantuviera consistente.
-mi concepto de utilizar la IA para acelerar el proyecto fue bajo la filosofia de HOL (Human on the Loop).
-pasando desde el modo plan hacia el Build y comencé con el agente @backend para crear el proyecto , por mi parte estuve configurando la base de datos supabase. Esta base de datos la elegi por tener familiaridad con firebase y su capa gratuita que me permitiria lanzar la aplicacion.
-Utilize la IA para modelar la base de datos y crear las querys aunque podria hacerla manualmente con DER y decidiendo, la IA podria optimizo el tiempo asi que me limite a configurar BAAS de supabase y correr las querys posterior a su modificacion y mi analisis.
-Configurado supabase lo integre al proyecto en un .env
+Mi flujo de trabajo consistió en utilizar el modo planificador de OpenCode, el cual me generó un plan de acción inicial. Discutimos sobre la arquitectura y, una vez alineados, procedimos con la implementación. El agente arquitecto de la IA realizaba revisiones periódicas de los cambios hechos por los agentes de front-end y back-end para asegurar que la arquitectura se mantuviera consistente y limpia.
 
-Para deployar la aplicacion elegi Netlify y asi automatizar todo el flujo de Continuos deployment ,asi tendria CI/CD. 
-utilize la capa gratuita de netlify y supabase.
+Mi enfoque al utilizar la Inteligencia Artificial fue bajo la filosofía **Human-on-the-Loop (HOTL)**, donde el criterio humano siempre tiene el control y la decisión final. 
+
+Pasando de la fase de planificación al desarrollo (Build), comencé delegando tareas al agente de backend para inicializar el proyecto, mientras que por mi parte configuré la base de datos en **Supabase**. Elegí esta tecnología por mi familiaridad previa con Firebase y porque su capa gratuita es ideal para lanzar y validar este MVP. 
+
+Utilicé la IA para modelar las tablas y optimizar las consultas SQL, ahorrando tiempo de configuración, aunque siempre bajo mi propio análisis y diseño del DER (Diagrama Entidad-Relación). Una vez configurada, la integré de forma segura en el proyecto mediante variables de entorno en el archivo `.env.local`.
+
+Para proteger las rutas y controlar el acceso de los usuarios, implementamos un **Middleware global de Next.js** integrado directamente con **Supabase Auth**.
+
+### Git y Despliegue (CI/CD)
+
+* **Estrategia de Ramas:** Al ser el único desarrollador del proyecto y con el fin de mantener un flujo de entrega sumamente ágil para este MVP, trabajé directamente sobre la rama `main` realizando commits frecuentes y descriptivos.
+* **CD (Despliegue Continuo):** Para el despliegue de la aplicación elegí **Netlify**, aprovechando su capa gratuita y su integración directa con GitHub. De esta forma, cada cambio subido a la rama `main` se compila y publica automáticamente.
+
+
 
 
 **Conclusión del uso de IA**: Aceleró el desarrollo permitiendo tener Auth, Base de Datos, Storage, UI Responsiva y CI/CD completo en menos de 7 días. El diferencial estuvo en **guiar** a la IA, no en obedecerla.
