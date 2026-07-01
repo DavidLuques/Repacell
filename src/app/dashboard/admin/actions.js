@@ -54,10 +54,22 @@ export async function deleteTechnician(formData) {
   
   const userId = formData.get('userId')
   
+  // 1. Eliminar primero de la tabla de la base de datos pública para evitar violaciones de clave foránea (FK)
+  const { error: dbError } = await supabaseAdmin
+    .from('user_roles')
+    .delete()
+    .eq('user_id', userId)
+
+  if (dbError) {
+    console.error("Error al eliminar rol en DB:", dbError)
+    throw new Error(dbError.message)
+  }
+
+  // 2. Eliminar el usuario de Auth
   const { error } = await supabaseAdmin.auth.admin.deleteUser(userId)
   
   if (error) {
-    console.error("Error al eliminar técnico:", error)
+    console.error("Error al eliminar técnico en Auth:", error)
     throw new Error(error.message)
   }
   
