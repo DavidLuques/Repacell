@@ -16,9 +16,9 @@ El objetivo fue crear una aplicación altamente funcional, de gran fidelidad vis
 ---
 ## USUARIOS para ingresar
 
-**Admin** :  Admin@admin.com    **Password:**  admin**
+**Admin** :  Admin@admin.com    **Password:**  admin
 
-**technic**: techic@technic.com **Password:**  technic**
+**technic**: techic@technic.com **Password:**  technic
 
 ---
 
