@@ -39,7 +39,7 @@ graph TD
         CI --> Lint[ESLint]
         CI --> Build[Next Build]
         CI --> Jest[Tests Unitarios]
-    \end
+    end
 ```
 
 ---
